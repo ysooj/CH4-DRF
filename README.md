@@ -84,6 +84,7 @@ clone한 폴더/
 │   ├── urls.py
 │   └── wsgi.py
 ├── .gitignore
+├── ERD.drawio
 └── manage.py
 ```
 
