@@ -159,38 +159,38 @@ clone한 폴더/
 - accounts 앱
     - 회원가입
     <p align="center">
-        <img src="">
+        <img width="1582" alt="회원가입" src="https://github.com/user-attachments/assets/6aa052bf-a6fe-40f0-9df2-d7bb4d733cd3" />
     </p>
     - 로그인
     <p align="center">
-        <img src="">
+        <img width="1582" alt="로그인" src="https://github.com/user-attachments/assets/1c77d8d2-6771-41d0-9af0-1279b0656558" />
     </p>
     - 프로필 조회
     <p align="center">
-        <img src="">
+        <img width="1582" alt="프로필 조회" src="https://github.com/user-attachments/assets/bbc9ba90-abfb-497b-be2c-4cfe8798dcdc" />
     </p>
     - 프로필 수정
     <p align="center">
-        <img src="">
+        <img width="1582" alt="프로필 수정" src="https://github.com/user-attachments/assets/7a3c4c41-723f-445b-8242-f98d0b3fd320" />
     </p>
 - products 앱
     - 상품 목록 조회
     <p align="center">
-        <img src="">
+        <img width="1582" alt="상품 목록 조회" src="https://github.com/user-attachments/assets/6ba7fa1b-55b1-4f39-9ba3-c8cb1403197f" />
     </p>
     - 상품 상세 조회
     <p align="center">
-        <img src="">
+        <img width="1582" alt="상품 상세 조회" src="https://github.com/user-attachments/assets/0102a8cb-e0f2-4e47-b50d-27de12395faa" />
     </p>
     - 상품 등록
     <p align="center">
-        <img src="">
+        <img width="1582" alt="상품 등록" src="https://github.com/user-attachments/assets/80460a20-d0ef-40b6-9b0e-0ad6143323d1" />
     </p>
     - 상품 상세 수정
     <p align="center">
-        <img src="">
+        <img width="1582" alt="상품 상세 수정" src="https://github.com/user-attachments/assets/33e45ba5-75a1-4320-9301-99c66e549224" />
     </p>
     - 상품 삭제
     <p align="center">
-        <img src="">
+        <img width="1582" alt="상품 삭제" src="https://github.com/user-attachments/assets/a983e34e-ed12-4ca8-b9f8-26aad3c206a8" />
     </p>
