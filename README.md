@@ -156,6 +156,491 @@ clone한 폴더/
   </details>
 
 ---
+## 📝 API 문서
+## acoounts 앱
+---
+### API Info
+---
+```
+http://127.0.0.1:8000/api/accounts/
+```
+회원가입 API 입니다.
+권한 : User
+#### Request
+---
+- Header
+    - None  
+- Body
+    - None 
+#### Response
+---
+201 Created
+``` json
+{
+    "message": "회원가입이 성공적으로 완료되었습니다."
+}
+ ```
+400 Bad Request
+``` json
+{
+    "email": [
+        "user with this 이메일 already exists."
+    ],
+    "username": [
+        "user with this 사용자명 already exists."
+    ]
+}
+ ```
+400 Bad Request
+``` json
+{
+    "email": [
+        "user with this 이메일 already exists."
+    ],
+    "name": [
+        "This field is required."
+    ],
+    "nickname": [
+        "This field is required."
+    ],
+    "birthdate": [
+        "This field is required."
+    ]
+}
+ ```
+---
+### API Info
+---
+```
+http://127.0.0.1:8000/api/accounts/login/
+```
+로그인 API 입니다.
+권한 : User
+#### Request
+---
+- Header
+    
+    - None
+        
+- Body
+    
+    - None
+        
+
+#### Response
+
+---
+
+200 OK
+
+``` json
+{
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjAyODU0LCJpYXQiOjE3MzUyMDEwNTQsImp0aSI6Ijc3YWRkNjkyYmVhNTQ3ZDc4YzY2NGVjZDA3NTFlMzIzIiwidXNlcl9pZCI6MX0.06MjpHLr8sLwSCAbBIrFokdRuEEVJ-TGAe7qLfYQ79c",
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTI4NzQ1NCwiaWF0IjoxNzM1MjAxMDU0LCJqdGkiOiJlZGZmMWRjNjZlZWE0ODE0YTEyMjVmNWNjY2QyNzJmNSIsInVzZXJfaWQiOjF9.Ful5XETPDtKD5CgJlga2npf-FwcrknelIE6N1ZN1WTQ",
+    "message": "로그인 성공"
+}
+
+ ```
+
+400 Bad Request
+
+``` json
+{
+    "error": "이메일 또는 비밀번호가 올바르지 않습니다."
+}
+
+ ```
+---
+### API Info
+
+---
+```
+http://127.0.0.1:8000/api/accounts/test/
+```
+
+프로필 조회 API 입니다.
+
+권한 : User
+
+#### Request
+
+---
+
+- Header
+    
+    - Authorization : access_token
+        
+- Body
+    
+    - None
+        
+
+#### Response
+
+---
+
+200 OK
+
+``` json
+{
+    "email": "test@gmail.com",
+    "username": "test",
+    "profile_image": null,
+    "name": "테스트",
+    "nickname": "테스트닉네임",
+    "birthdate": "2024-12-25"
+}
+
+ ```
+
+404 Not Found
+
+``` json
+{
+    "error": "User not found"
+}
+
+ ```
+---
+### API Info
+
+---
+```
+http://127.0.0.1:8000/api/accounts/newtest/
+```
+프로필 수정 API 입니다.
+
+권한 : User
+
+#### Request
+
+---
+
+- Header
+    
+    - Authorization : access_token
+        
+- Body
+    
+    - None
+        
+
+#### Response
+
+---
+
+200 OK
+
+``` json
+{
+    "message": "회원정보가 성공적으로 수정되었습니다.",
+    "user": {
+        "email": "newemail@naver.com",
+        "username": "newtest",
+        "profile_image": null,
+        "name": "테스트",
+        "nickname": "테스트닉네임",
+        "birthdate": "2024-12-26"
+    }
+}
+
+ ```
+
+400 Bad Request
+
+``` json
+{
+    "email": [
+        "Enter a valid email address."
+    ]
+}
+
+ ```
+
+401 Unauthorized
+
+``` json
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+ ```
+
+404 Not Found
+
+``` json
+{
+    "error": "User not found"
+}
+
+ ```
+---
+## products 앱
+---
+### API Info
+
+---
+```
+http://127.0.0.1:8000/api/products/
+```
+상품 목록 조회 API 입니다.
+
+권한 : User
+
+#### Request
+
+---
+
+- Header
+    
+    - None
+        
+- Body
+    
+    - None
+        
+
+#### Response
+
+---
+
+200 OK
+
+``` json
+[]
+
+ ```
+---
+### API Info
+
+---
+```
+http://127.0.0.1:8000/api/products/22/
+```
+상품 상세 조회 API 입니다.
+
+권한 : User
+
+#### Request
+
+---
+
+- Header
+    
+    - Authorization : access_token
+        
+- Body
+    
+    - None
+        
+
+#### Response
+
+---
+
+200 OK
+
+``` json
+{
+    "id": 1,
+    "author": "jgarcia",
+    "title": "Writer not wish happen senior media.",
+    "content": "Study wall their identify bill gun traditional oil. Movie entire three rather sit behind. Simple late have.",
+    "created_at": "1981-08-01T18:09:18.966302Z",
+    "updated_at": "2009-02-11T10:14:57.362068Z"
+}
+
+ ```
+
+401 Unauthorized
+
+``` json
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+ ```
+
+404 Not Found
+
+``` json
+{
+    "detail": "No Product matches the given query."
+}
+
+ ```
+---
+## API Info
+
+---
+```
+http://127.0.0.1:8000/api/products/
+```
+상품 등록 API 입니다.
+
+권한 : User
+
+### Request
+
+---
+
+- Header
+    
+    - Authorization : access_token
+        
+- Body
+    
+    - None
+        
+
+### Response
+
+---
+
+200 OK
+
+``` json
+{
+    "id": 21,
+    "author": "test",
+    "title": "sofa",
+    "content": "nice sofa",
+    "created_at": "2024-12-26T09:18:41.874824Z",
+    "updated_at": "2024-12-26T09:18:41.874861Z"
+}
+
+ ```
+
+400 Bad Request
+
+``` json
+{
+    "title": [
+        "This field is required."
+    ],
+    "content": [
+        "This field is required."
+    ]
+}
+
+ ```
+
+401 Unauthorized
+
+``` json
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+ ```
+---
+## API Info
+
+---
+```
+http://127.0.0.1:8000/api/products/21/
+```
+상품 상세 수정 API 입니다.
+
+권한 : User
+
+### Request
+
+---
+
+- Header
+    
+    - Authorization : access_token
+        
+- Body
+    
+    - None
+        
+
+### Response
+
+---
+
+200 OK
+
+``` json
+{
+    "id": 1,
+    "author": "jgarcia",
+    "title": "새로운 가구로 수정",
+    "content": "새로운 가구에 대한 설명",
+    "created_at": "1981-08-01T18:09:18.966302Z",
+    "updated_at": "2024-12-26T09:39:01.743980Z"
+}
+
+ ```
+
+401 Unauthorized
+
+``` json
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+ ```
+
+404 Not Found
+
+``` json
+{
+    "detail": "No Product matches the given query."
+}
+
+ ```
+---
+## API Info
+
+---
+```
+http://127.0.0.1:8000/api/products/21/
+```
+상품 삭제 API 입니다.
+
+권한 : User
+
+### Request
+
+---
+
+- Header
+    
+    - Authorization : access_token
+        
+- Body
+    
+    - None
+        
+
+### Response
+
+---
+
+204 No Content
+
+401 Unauthorized
+
+``` json
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+ ```
+
+404 Not Found
+
+``` json
+{
+    "detail": "No Product matches the given query."
+}
+
+ ```
+
+---
 ## 🗝️ Postman으로 기능 점검
 - accounts 앱
     - 회원가입
