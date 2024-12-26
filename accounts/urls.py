@@ -11,6 +11,6 @@ from rest_framework_simplejwt.views import (
 app_name = 'accounts'
 urlpatterns = [
     path('', views.signup, name="signup"),
-    # path('login', views.login, name="login"),
-    # path('<str:username>', views.profile, name="profile"),
+    path('login/', views.login, name="login"),
+    # path('<str:username>/', views.profile, name="profile"),
 ]

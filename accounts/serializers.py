@@ -26,3 +26,23 @@ class SignupSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data.pop('password2')  # password2 제거 ; 검증을 위한 것이기 때문에 저장할 필요가 없어서.
         return User.objects.create_user(**validated_data)
+    
+
+# 프로필 시리얼라이저 모델 정의
+class UserProfileSerializer(serializers.ModelSerializer):
+    profile_image = serializers.SerializerMethodField()  # 커스텀 필드로 처리
+    
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'profile_image', 'name', 'nickname', 'birthdate']  # 반환할 필드
+        
+    def get_profile_image(self, obj):
+        request = self.context.get('request')  # Serializer context에서 request 가져오기
+        if obj.profile_image:
+            return request.build_absolute_uri(obj.profile_image.url)
+        return None
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'profile_image', 'name', 'nickname', 'birthdate')  # 수정 가능한 필드
