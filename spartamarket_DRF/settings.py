@@ -37,6 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 서드파티
+    'django_seed',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+
+    # 내가 만든 앱
+    'accounts',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +131,29 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# User 모델 설정
+AUTH_USER_MODEL = 'accounts.User'
+
+# # JWT 인증
+# REST_FRAMEWORK = {
+#     # 모든 API에 인증을 필수로 하는 전역 설정
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',  
+#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ),
+# }
+
+# # JWT 설정
+# from datetime import timedelta
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+# }
+
+
+# 미디어 파일 설정
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
