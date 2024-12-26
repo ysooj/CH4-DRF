@@ -1,7 +1,16 @@
-from django.urls import path
-from . import views  # views가 필요하다면 임포트
+#accounts/urls.py
 
+from django.urls import path
+from . import views
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenBlacklistView,
+)
+
+app_name = 'accounts'
 urlpatterns = [
-    # 여기에 URL 패턴 추가
-    # 예: path('login/', views.login_view, name='login'),
+    path('', views.signup, name="signup"),
+    # path('login', views.login, name="login"),
+    # path('<str:username>', views.profile, name="profile"),
 ]

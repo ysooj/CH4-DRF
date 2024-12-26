@@ -135,23 +135,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # User 모델 설정
 AUTH_USER_MODEL = 'accounts.User'
 
-# # JWT 인증
-# REST_FRAMEWORK = {
-#     # 모든 API에 인증을 필수로 하는 전역 설정
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',  
-#     ),
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     ),
-# }
+# JWT 인증
+REST_FRAMEWORK = {
+    # 모든 API에 인증을 필수로 하는 전역 설정
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
-# # JWT 설정
-# from datetime import timedelta
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-# }
+# JWT 설정
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 
 # 미디어 파일 설정
