@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from .serializers import SignupSerializer
+from .serializers import SignupSerializer, UserProfileSerializer, UserUpdateSerializer
 from django.contrib.auth import authenticate, get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.http import JsonResponse
@@ -44,3 +44,28 @@ def login(request):
         }, status=200)
     else:
         return JsonResponse({'error': '이메일 또는 비밀번호가 올바르지 않습니다.'}, status=400)
+    
+# 프로필
+@api_view(['GET', 'PUT', 'PATCH'])
+def profile(request, username):
+    # URL에서 받은 username을 기반으로 사용자 찾기
+    user = User.objects.filter(username=username).first()
+    
+    if not user:
+        return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = UserProfileSerializer(user, context={'request': request})
+        return Response(serializer.data, status=200)
+
+    if request.method in ('PUT', 'PATCH'):
+        serializer = UserUpdateSerializer(instance=user, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()  # 수정 내용 저장
+            return Response({
+                "message": "회원정보가 성공적으로 수정되었습니다.",
+                "user": serializer.data
+            }, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
